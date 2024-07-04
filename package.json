@@ -1,0 +1,14 @@
+{
+  "name": "soft-shares-ai2",
+  "version": "0.0.0",
+  "description": "SoftSharesAI2",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  },
+  "eslintConfig": {
+  }
+}
