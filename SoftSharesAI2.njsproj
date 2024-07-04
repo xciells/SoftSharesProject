@@ -28,9 +28,21 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="config\config.json" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="client\" />
+    <Folder Include="client\src\" />
+    <Folder Include="client\public\" />
+    <Folder Include="models\" />
+    <Folder Include="routes\" />
+    <Folder Include="views\" />
+    <Folder Include="controllers\" />
+    <Folder Include="config\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
