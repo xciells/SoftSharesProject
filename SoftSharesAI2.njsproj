@@ -29,6 +29,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="client\.gitignore" />
+    <Content Include="client\package-lock.json" />
+    <Content Include="client\package.json" />
+    <Content Include="client\public\favicon.ico" />
+    <Content Include="client\public\index.html" />
+    <Content Include="client\public\logo192.png" />
+    <Content Include="client\public\logo512.png" />
+    <Content Include="client\public\manifest.json" />
+    <Content Include="client\public\robots.txt" />
+    <Content Include="client\README.md" />
+    <Content Include="client\src\App.css" />
+    <Content Include="client\src\App.js" />
+    <Content Include="client\src\App.test.js" />
+    <Content Include="client\src\components\About.js" />
+    <Content Include="client\src\components\Home.js" />
+    <Content Include="client\src\index.css" />
+    <Content Include="client\src\index.js" />
+    <Content Include="client\src\logo.svg" />
+    <Content Include="client\src\reportWebVitals.js" />
+    <Content Include="client\src\setupTests.js" />
     <Content Include="config\config.json" />
     <Content Include="server.js" />
     <Content Include="package.json" />
@@ -36,8 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="client\" />
-    <Folder Include="client\src\" />
     <Folder Include="client\public\" />
+    <Folder Include="client\src\" />
+    <Folder Include="client\src\components\" />
     <Folder Include="models\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
