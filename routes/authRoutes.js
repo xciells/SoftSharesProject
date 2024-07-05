@@ -3,10 +3,19 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
 
+//registo e login
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+
+//ativar e desativar utilizadores
 router.patch('/activate/:userId', authController.activateUser);
 router.patch('/deactivate/:userId', authController.deactivateUser);
+
+//mudar permissao entre admin ou utulizador comum
 router.patch('/change-type/:userId', authController.changeUserType);
+router.patch('/change-password/:userId', authController.changePassword);
+
+// Rota para associar área a um usuário
+router.patch('/associate-area/:id', authController.associateArea);
 
 module.exports = router;

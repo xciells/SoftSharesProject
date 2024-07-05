@@ -2,6 +2,7 @@
 const jwt = require('jsonwebtoken');
 const db = require('../models');
 const Utilizadores = db.utilizadores;
+const Areas = db.areas;
 
 const authController = {
     register: async (req, res) => {
@@ -85,6 +86,48 @@ const authController = {
             res.status(200).json({ message: 'Tipo de usuário atualizado com sucesso' });
         } catch (err) {
             res.status(500).json({ error: 'Erro ao atualizar tipo de usuário' });
+        }
+    },
+    changePassword: async (req, res) => {
+        const { userId } = req.params;
+        const { password } = req.body;
+        try {
+            const user = await Utilizadores.findByPk(userId);
+            if (!user) {
+                return res.status(404).json({ error: 'Usuário não encontrado' });
+            }
+            user.password = password;
+            user.senha_temporaria = false;
+            await user.save();
+            res.status(200).json({ message: 'Senha atualizada com sucesso' });
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao atualizar senha' });
+        }
+    },
+    associateArea: async (req, res) => {
+        const { id } = req.params; // ID do usuário
+        const { area_id } = req.body; // Novo ID da área
+
+        try {
+            const user = await Utilizadores.findByPk(id);
+            if (!user) {
+                console.log(`Usuário com ID ${id} não encontrado`);
+                return res.status(404).json({ error: 'Usuário não encontrado' });
+            }
+
+            const area = await Areas.findByPk(area_id);
+            if (!area) {
+                console.log(`Área com ID ${area_id} não encontrada`);
+                return res.status(404).json({ error: 'Área não encontrada' });
+            }
+
+            user.area_id = area_id;
+            await user.save();
+
+            res.status(200).json({ message: `Usuário associado à área ${area.nome} com sucesso` });
+        } catch (err) {
+            console.error('Erro ao associar área ao usuário:', err);
+            res.status(500).json({ error: 'Erro ao associar área ao usuário' });
         }
     }
 };

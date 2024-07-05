@@ -48,6 +48,19 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: true
+        },
+        senha_temporaria: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        },
+        area_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'areas',
+                key: 'id'
+            }
         }
     }, {
         sequelize,

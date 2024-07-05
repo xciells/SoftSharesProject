@@ -9,6 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//routes
 app.use('/auth', authRoutes);
 
 // Teste de Conexão com o Banco de Dados
