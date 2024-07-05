@@ -56,6 +56,7 @@
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="utils\emailService.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="client\" />
@@ -63,6 +64,7 @@
     <Folder Include="client\src\" />
     <Folder Include="client\src\components\" />
     <Folder Include="models\" />
+    <Folder Include="utils\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
     <Folder Include="controllers\" />

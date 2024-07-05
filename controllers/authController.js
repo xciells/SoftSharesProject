@@ -1,13 +1,19 @@
-// controllers/authController.js
 const jwt = require('jsonwebtoken');
 const db = require('../models');
+const crypto = require('crypto');
 const Utilizadores = db.utilizadores;
 const Areas = db.areas;
+const { sendEmail } = require('../utils/emailService');
+
+const generateRandomPassword = () => {
+    return crypto.randomBytes(8).toString('hex'); // Gera uma senha aleatória de 16 caracteres
+};
 
 const authController = {
     register: async (req, res) => {
         const { nome, password, email, numero_colaborador, morada, data_nascimento, contacto, tipoid } = req.body;
         try {
+            const password = generateRandomPassword();
             const newUser = await Utilizadores.create({
                 nome,
                 password,
@@ -16,15 +22,22 @@ const authController = {
                 morada,
                 data_nascimento,
                 contacto,
-                tipoid
+                tipoid,
+                ativo: true,
+                senha_temporaria: true,
+                area_id: 0 // Define área como 0 no registro
             });
+
+            // Enviar e-mail com a senha temporária
+            const emailText = `Olá ${nome},\n\nSua conta foi criada com sucesso. Sua senha temporária é: ${password}\n\nPor favor, altere sua senha após o primeiro login.\n\nObrigado!`;
+            await sendEmail(email, 'Bem-vindo à aplicação', emailText);
+
             res.status(201).json(newUser);
         } catch (err) {
-            console.error("Erro ao registrar usuário:", err);
-            res.status(500).json({ error: 'Erro ao registrar usuário' });
+            console.error('Erro ao registrar usuário:', err);
+            res.status(500).json({ error: 'Erro ao registrar usuário', details: err.message });
         }
     },
-
     login: async (req, res) => {
         const { email, password } = req.body;
         try {
