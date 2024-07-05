@@ -50,6 +50,9 @@
     <Content Include="client\src\reportWebVitals.js" />
     <Content Include="client\src\setupTests.js" />
     <Content Include="config\config.json" />
+    <Content Include="controllers\authController.js" />
+    <Content Include="routes\authRoutes.js" />
+    <Content Include="routes\index.js" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />

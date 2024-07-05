@@ -1,31 +1,15 @@
-'use strict';
-
+// server.js
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
-const db = require('./models');
-const routes = require('./routes');
+const authRoutes = require('./routes/authRoutes');
+const db = require('./models'); // Certifique-se de que a configuração do sequelize está correta
 
 const app = express();
-
-// Configuração de codificação UTF-8
-app.use((req, res, next) => {
-    res.setHeader('Content-Type', 'text/html; charset=UTF-8');
-    next();
-});
-
-// Servir arquivos estáticos da build do React
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', routes);
-
-// Servir o aplicativo React
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+app.use('/auth', authRoutes);
 
 // Teste de Conexão com o Banco de Dados
 db.sequelize.authenticate()
