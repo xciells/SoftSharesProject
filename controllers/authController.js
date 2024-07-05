@@ -70,6 +70,22 @@ const authController = {
         } catch (err) {
             res.status(500).json({ error: 'Erro ao inativar usuário' });
         }
+    },
+
+    changeUserType: async (req, res) => {
+        const { userId } = req.params;
+        const { tipoid } = req.body; // 1 for common user, 2 for admin
+        try {
+            const user = await Utilizadores.findByPk(userId);
+            if (!user) {
+                return res.status(404).json({ error: 'Usuário não encontrado' });
+            }
+            user.tipoid = tipoid;
+            await user.save();
+            res.status(200).json({ message: 'Tipo de usuário atualizado com sucesso' });
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao atualizar tipo de usuário' });
+        }
     }
 };
 
