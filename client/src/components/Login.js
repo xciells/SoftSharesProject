@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './css/Login.css'; // Importando o arquivo CSS para os estilos
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -42,41 +43,35 @@ const Login = () => {
     };
 
     return (
-        <div className="container mt-5">
-            <div className="row justify-content-center">
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <h3 className="card-title text-center">Login</h3>
-                            <form onSubmit={handleLogin}>
-                                <div className="form-group">
-                                    <label htmlFor="email">Email</label>
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        id="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="password">Password</label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                <button type="submit" className="btn btn-primary btn-block">Login</button>
-                            </form>
-                            {message && <p className="mt-3 text-center">{message}</p>}
-                        </div>
+        <div className="login-background">
+            <div className="login-container">
+                <img src="/images/softshares_logo.png" alt="Softshares Logo" className="logo" />
+                <h2>Login</h2>
+                <form onSubmit={handleLogin}>
+                    <div className="form-group">
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            className="form-control"
+                        />
                     </div>
-                </div>
+                    <div className="form-group">
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            className="form-control"
+                        />
+                    </div>
+                    {message && <p className="message">{message}</p>}
+                    <button type="submit" className="btn btn-primary">Login</button>
+                </form>
+                <img src="/images/softinsa_logo.png" alt="Softinsa Logo" className="small-logo" />
             </div>
         </div>
     );

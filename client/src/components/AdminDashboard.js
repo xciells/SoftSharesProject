@@ -1,12 +1,12 @@
 import React from 'react';
 
-const AdminDashboard = () => {
+const Admin = () => {
     return (
-        <div className="container">
-            <h1 className="my-4">Painel do Administrador</h1>
-            <p>Bem-vindo ao painel do administrador.</p>
+        <div>
+            <h1>Admin Page</h1>
+            <p>Bem-vindo à área administrativa!</p>
         </div>
     );
 };
 
-export default AdminDashboard;
+export default Admin;

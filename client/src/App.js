@@ -5,17 +5,17 @@ import AdminDashboard from './components/AdminDashboard';
 import NoAccess from './components/NoAccess';
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/admin" element={<AdminDashboard />} />
-                    <Route path="/no-access" element={<NoAccess />} />
-                </Routes>
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/no-access" element={<NoAccess />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
