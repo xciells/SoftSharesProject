@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../assets/css/Login.css'; // Usando o mesmo CSS do Login
+import '../assets/css/Login.css'; // Usando o CSS a partir da nova estrutura de diretórios
 
 import softsharesLogo from '../assets/images/softshares_logo.png';
 import softinsaLogo from '../assets/images/softinsa_logo.png';
@@ -11,6 +11,7 @@ const ChangePassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [passwordChanged, setPasswordChanged] = useState(false); // Estado para rastrear se a senha foi alterada
     const navigate = useNavigate();
 
     const handleChangePassword = async (e) => {
@@ -34,6 +35,7 @@ const ChangePassword = () => {
             });
             console.log('Resposta do servidor:', response.data); // Mensagem de debug
             setMessage('Senha alterada com sucesso');
+            setPasswordChanged(true); // Atualiza o estado para indicar que a senha foi alterada
         } catch (error) {
             console.error('Erro ao tentar mudar a senha:', error); // Mensagem de debug
             if (error.response) {
@@ -46,7 +48,7 @@ const ChangePassword = () => {
     };
 
     const handleBack = () => {
-        navigate('/login');
+        navigate('/');
     };
 
     return (
@@ -63,6 +65,7 @@ const ChangePassword = () => {
                             className="form-control"
                             value={oldPassword}
                             onChange={(e) => setOldPassword(e.target.value)}
+                            disabled={passwordChanged} // Desabilita o campo se a senha foi alterada
                         />
                     </div>
                     <div className="form-group">
@@ -73,6 +76,7 @@ const ChangePassword = () => {
                             className="form-control"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
+                            disabled={passwordChanged} // Desabilita o campo se a senha foi alterada
                         />
                     </div>
                     <div className="form-group">
@@ -83,12 +87,16 @@ const ChangePassword = () => {
                             className="form-control"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
+                            disabled={passwordChanged} // Desabilita o campo se a senha foi alterada
                         />
                     </div>
                     {message && <p className="message">{message}</p>}
-                    <button type="submit" className="btn btn-primary">Mudar Senha</button>
+                    {!passwordChanged ? (
+                        <button type="submit" className="btn btn-primary">Mudar Senha</button>
+                    ) : (
+                        <button onClick={handleBack} className="btn btn-secondary">Voltar</button>
+                    )}
                 </form>
-                <button onClick={handleBack} className="btn btn-secondary">Voltar</button>
                 <img src={softinsaLogo} alt="Softinsa Logo" className="logo-bottom" />
             </div>
         </div>
