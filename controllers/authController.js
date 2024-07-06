@@ -14,6 +14,11 @@ const authController = {
     register: async (req, res) => {
         const { nome, email, numero_colaborador, morada, data_nascimento, contacto, tipoid } = req.body;
         try {
+            const existingUser = await Utilizadores.findOne({ where: { email } });
+            if (existingUser) {
+                return res.status(400).json({ error: 'Email já registrado' });
+            }
+
             const password = generateRandomPassword();
             const newUser = await Utilizadores.create({
                 nome,
@@ -26,10 +31,9 @@ const authController = {
                 tipoid,
                 ativo: true,
                 senha_temporaria: true,
-                area_id: 0 // Define área como 0 no registro
+                area_id: 0
             });
 
-            // Enviar e-mail com a senha temporária
             const emailText = `Olá ${nome},\n\nSua conta foi criada com sucesso. Sua senha temporária é: ${password}\n\nPor favor, altere sua senha após o primeiro login.\n\nObrigado!`;
             await sendEmail(email, 'Bem-vindo à aplicação', emailText);
 
