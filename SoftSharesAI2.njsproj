@@ -33,8 +33,9 @@
     <Content Include="client\package-lock.json" />
     <Content Include="client\package.json" />
     <Content Include="client\public\favicon.ico" />
-    <Content Include="client\public\images\softinsa_logo.png" />
-    <Content Include="client\public\images\softshares_logo.png" />
+    <Content Include="client\src\assets\css\DashboardAdmin.css" />
+    <Content Include="client\src\assets\images\softinsa_logo.png" />
+    <Content Include="client\src\assets\images\softshares_logo.png" />
     <Content Include="client\public\index.html" />
     <Content Include="client\public\logo192.png" />
     <Content Include="client\public\logo512.png" />
@@ -44,15 +45,16 @@
     <Content Include="client\src\App.css" />
     <Content Include="client\src\App.js" />
     <Content Include="client\src\App.test.js" />
-    <Content Include="client\src\components\AdminDashboard.js" />
+    <Content Include="client\src\components\ChangePassword.js" />
+    <Content Include="client\src\assets\css\ChangePassword.css" />
+    <Content Include="client\src\components\DashboardAdmin.js" />
     <Content Include="client\src\components\Login.js" />
     <Content Include="client\src\components\NoAccess.js" />
-    <Content Include="client\src\hooks\useAuth.js" />
+    <Content Include="client\src\assets\css\Login.css" />
     <Content Include="client\src\index.css" />
     <Content Include="client\src\index.js" />
     <Content Include="client\src\logo.svg" />
     <Content Include="client\src\reportWebVitals.js" />
-    <Content Include="client\src\services\authService.js" />
     <Content Include="client\src\setupTests.js" />
     <Content Include="config\config.json" />
     <Content Include="controllers\authController.js" />
@@ -66,11 +68,11 @@
   <ItemGroup>
     <Folder Include="client\" />
     <Folder Include="client\public\" />
-    <Folder Include="client\public\images\" />
+    <Folder Include="client\src\assets\images\" />
     <Folder Include="client\src\" />
     <Folder Include="client\src\components\" />
-    <Folder Include="client\src\hooks\" />
-    <Folder Include="client\src\services\" />
+    <Folder Include="client\src\assets\css\" />
+    <Folder Include="client\src\assets\" />
     <Folder Include="models\" />
     <Folder Include="utils\" />
     <Folder Include="routes\" />

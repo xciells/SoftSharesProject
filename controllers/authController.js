@@ -44,18 +44,12 @@ const authController = {
         try {
             const user = await Utilizadores.findOne({ where: { email } });
             if (!user) {
-                console.log('Usuário não encontrado');
                 return res.status(401).json({ error: 'Credenciais inválidas' });
             }
             if (password !== user.password) {
-                console.log('Senha incorreta');
                 return res.status(401).json({ error: 'Credenciais inválidas' });
             }
-            if (user.tipoid !== 2) {
-                console.log('Acesso negado. Usuário não é administrador.');
-                return res.status(403).json({ error: 'Acesso negado. Usuário não é administrador.' });
-            }
-            const token = jwt.sign({ id: user.id, tipoid: user.tipoid }, 'your_jwt_secret', { expiresIn: '1h' });
+            const token = jwt.sign({ id: user.id, tipoid: user.tipoid, senha_temporaria: user.senha_temporaria }, 'your_jwt_secret', { expiresIn: '1h' });
             res.json({ token });
         } catch (err) {
             console.error("Erro ao realizar login:", err);
@@ -108,22 +102,6 @@ const authController = {
             res.status(500).json({ error: 'Erro ao atualizar tipo de usuário' });
         }
     },
-    changePassword: async (req, res) => {
-        const { userId } = req.params;
-        const { password } = req.body;
-        try {
-            const user = await Utilizadores.findByPk(userId);
-            if (!user) {
-                return res.status(404).json({ error: 'Usuário não encontrado' });
-            }
-            user.password = password;
-            user.senha_temporaria = false;
-            await user.save();
-            res.status(200).json({ message: 'Senha atualizada com sucesso' });
-        } catch (err) {
-            res.status(500).json({ error: 'Erro ao atualizar senha' });
-        }
-    },
     associateArea: async (req, res) => {
         const { id } = req.params; // ID do usuário
         const { area_id } = req.body; // Novo ID da área
@@ -158,6 +136,33 @@ const authController = {
             res.json(user);
         } catch (err) {
             res.status(500).json({ error: 'Erro ao obter detalhes do usuário' });
+        }
+    },
+    changePassword: async (req, res) => {
+        const { oldPassword, newPassword } = req.body;
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            console.log('Token recebido:', token); // Mensagem de debug
+            const decoded = jwt.verify(token, 'your_jwt_secret');
+            console.log('Token decodificado:', decoded); // Mensagem de debug
+            const user = await Utilizadores.findByPk(decoded.id);
+            console.log('Usuário encontrado:', user); // Mensagem de debug
+
+            if (!user) {
+                return res.status(404).json({ error: 'Usuário não encontrado' });
+            }
+
+            if (oldPassword !== user.password) {
+                return res.status(400).json({ error: 'Senha antiga incorreta' });
+            }
+
+            user.password = newPassword;
+            user.senha_temporaria = false;
+            await user.save();
+            res.status(200).json({ message: 'Senha atualizada com sucesso' });
+        } catch (err) {
+            console.error('Erro ao tentar mudar a senha:', err); // Mensagem de debug
+            res.status(500).json({ error: 'Erro ao tentar mudar a senha', details: err.message });
         }
     }
 };

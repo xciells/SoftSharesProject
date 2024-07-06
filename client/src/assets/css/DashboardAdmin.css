@@ -1,0 +1,16 @@
+/* client/src/components/DashboardAdmin.css */
+.dashboard-admin-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+    .dashboard-admin-container h1 {
+        color: #343a40;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-admin-container p {
+        color: #6c757d;
+    }
