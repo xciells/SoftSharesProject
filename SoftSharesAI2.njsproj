@@ -43,11 +43,16 @@
     <Content Include="client\src\App.js" />
     <Content Include="client\src\App.test.js" />
     <Content Include="client\src\components\About.js" />
+    <Content Include="client\src\components\AdminDashboard.js" />
     <Content Include="client\src\components\Home.js" />
+    <Content Include="client\src\components\Login.js" />
+    <Content Include="client\src\components\NoAccess.js" />
+    <Content Include="client\src\hooks\useAuth.js" />
     <Content Include="client\src\index.css" />
     <Content Include="client\src\index.js" />
     <Content Include="client\src\logo.svg" />
     <Content Include="client\src\reportWebVitals.js" />
+    <Content Include="client\src\services\authService.js" />
     <Content Include="client\src\setupTests.js" />
     <Content Include="config\config.json" />
     <Content Include="controllers\authController.js" />
@@ -63,6 +68,8 @@
     <Folder Include="client\public\" />
     <Folder Include="client\src\" />
     <Folder Include="client\src\components\" />
+    <Folder Include="client\src\hooks\" />
+    <Folder Include="client\src\services\" />
     <Folder Include="models\" />
     <Folder Include="utils\" />
     <Folder Include="routes\" />

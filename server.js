@@ -2,12 +2,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
-const db = require('./models'); // Certifique-se de que a configuração do sequelize está correta
-
+const cors = require('cors');
+const db = require('./models'); 
 const app = express();
 
+// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors()); 
 
 //routes
 app.use('/auth', authRoutes);

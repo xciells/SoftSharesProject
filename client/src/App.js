@@ -1,15 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
+import Login from './components/Login';
+import AdminDashboard from './components/AdminDashboard';
+import NoAccess from './components/NoAccess';
 
 function App() {
     return (
         <Router>
-            <div>
+            <div className="App">
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/no-access" element={<NoAccess />} />
                 </Routes>
             </div>
         </Router>

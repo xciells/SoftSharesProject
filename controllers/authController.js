@@ -3,6 +3,7 @@ const db = require('../models');
 const crypto = require('crypto');
 const Utilizadores = db.utilizadores;
 const Areas = db.areas;
+
 const { sendEmail } = require('../utils/emailService');
 
 const generateRandomPassword = () => {
@@ -11,7 +12,7 @@ const generateRandomPassword = () => {
 
 const authController = {
     register: async (req, res) => {
-        const { nome, password, email, numero_colaborador, morada, data_nascimento, contacto, tipoid } = req.body;
+        const { nome, email, numero_colaborador, morada, data_nascimento, contacto, tipoid } = req.body;
         try {
             const password = generateRandomPassword();
             const newUser = await Utilizadores.create({
@@ -43,12 +44,18 @@ const authController = {
         try {
             const user = await Utilizadores.findOne({ where: { email } });
             if (!user) {
+                console.log('Usuário não encontrado');
                 return res.status(401).json({ error: 'Credenciais inválidas' });
             }
             if (password !== user.password) {
+                console.log('Senha incorreta');
                 return res.status(401).json({ error: 'Credenciais inválidas' });
             }
-            const token = jwt.sign({ id: user.id }, 'your_jwt_secret', { expiresIn: '1h' });
+            if (user.tipoid !== 2) {
+                console.log('Acesso negado. Usuário não é administrador.');
+                return res.status(403).json({ error: 'Acesso negado. Usuário não é administrador.' });
+            }
+            const token = jwt.sign({ id: user.id, tipoid: user.tipoid }, 'your_jwt_secret', { expiresIn: '1h' });
             res.json({ token });
         } catch (err) {
             console.error("Erro ao realizar login:", err);
@@ -141,6 +148,16 @@ const authController = {
         } catch (err) {
             console.error('Erro ao associar área ao usuário:', err);
             res.status(500).json({ error: 'Erro ao associar área ao usuário' });
+        }
+    },
+    me: async (req, res) => {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, 'your_jwt_secret');
+            const user = await Utilizadores.findByPk(decoded.id);
+            res.json(user);
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao obter detalhes do usuário' });
         }
     }
 };

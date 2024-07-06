@@ -18,4 +18,7 @@ router.patch('/change-password/:userId', authController.changePassword);
 // Rota para associar área a um usuário
 router.patch('/associate-area/:id', authController.associateArea);
 
+// Rota para obter detalhes do usuário logado
+router.get('/me', authController.me);
+
 module.exports = router;
