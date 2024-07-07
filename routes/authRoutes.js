@@ -13,7 +13,12 @@ router.patch('/deactivate/:userId', authController.deactivateUser);
 
 //mudar permissao entre admin ou utulizador comum
 router.patch('/change-type/:userId', authController.changeUserType);
+
+//mudar password pela primeira vez
 router.patch('/change-password/:userId', authController.changePassword);
+
+//recuperar password
+router.post('/recover-password', authController.recoverPassword);
 
 // Rota para associar área a um usuário
 router.patch('/associate-area/:id', authController.associateArea);

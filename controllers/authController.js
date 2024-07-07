@@ -168,6 +168,25 @@ const authController = {
             console.error('Erro ao tentar mudar a senha:', err); // Mensagem de debug
             res.status(500).json({ error: 'Erro ao tentar mudar a senha', details: err.message });
         }
+    },
+    recoverPassword: async (req, res) => {
+        const { email } = req.body;
+        try {
+            const user = await Utilizadores.findOne({ where: { email } });
+            if (user) {
+                const password = generateRandomPassword();
+                user.password = password;
+                user.senha_temporaria = true;
+                await user.save();
+
+                const emailText = `Olá ${user.nome},\n\nVocê solicitou a recuperação de senha. Sua nova senha temporária é: ${password}\n\nPor favor, altere sua senha após o primeiro login.\n\nObrigado!`;
+                await sendEmail(email, 'Recuperação de senha', emailText);
+            }
+            res.status(200).json({ message: 'Cheque sua caixa postal. Se este email está no nosso sistema, receberá um novo password.' });
+        } catch (err) {
+            console.error('Erro ao tentar recuperar a senha:', err);
+            res.status(500).json({ error: 'Erro ao tentar recuperar a senha' });
+        }
     }
 };
 

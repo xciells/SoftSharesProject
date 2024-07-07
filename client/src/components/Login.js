@@ -49,6 +49,10 @@ const Login = () => {
         navigate('/register');
     };
 
+    const handlePasswordRecovery = () => {
+        navigate('/recover-password');
+    };
+
     return (
         <div className="login-container">
             <div className="login-box">
@@ -78,8 +82,8 @@ const Login = () => {
                     {message && <p className="message">{message}</p>}
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
-                <br />
-                <p className="register-link" onClick={handleRegister}>Clique aqui para registar-se</p>
+                <button className="btn btn-secondary" onClick={handleRegister}>Registrar-se</button>
+                <p className="recover-password-link" onClick={handlePasswordRecovery}>Recuperar password</p>
                 <img src={softinsaLogo} alt="Softinsa Logo" className="logo-bottom" />
             </div>
         </div>

@@ -34,6 +34,7 @@
     <Content Include="client\package.json" />
     <Content Include="client\public\favicon.ico" />
     <Content Include="client\src\assets\css\DashboardAdmin.css" />
+    <Content Include="client\src\assets\css\RecoverPassword.css" />
     <Content Include="client\src\assets\css\Register.css" />
     <Content Include="client\src\assets\images\softinsa_logo.png" />
     <Content Include="client\src\assets\images\softshares_logo.png" />
@@ -52,6 +53,7 @@
     <Content Include="client\src\components\Login.js" />
     <Content Include="client\src\components\NoAccess.js" />
     <Content Include="client\src\assets\css\Login.css" />
+    <Content Include="client\src\components\RecoverPassword.js" />
     <Content Include="client\src\components\Register.js" />
     <Content Include="client\src\index.css" />
     <Content Include="client\src\index.js" />
