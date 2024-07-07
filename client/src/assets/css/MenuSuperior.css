@@ -1,0 +1,21 @@
+.logo {
+    height: 40px;
+    margin-top: 10px;
+}
+
+.navbar {
+    justify-content: space-between;
+    margin: 0px;
+    padding-left: 30px;
+}
+
+.icon {
+    font-size: 1.5rem; /* Tamanho dos ícones maior */
+    color: white; /* Cor dos ícones */
+    cursor: pointer;
+    padding-right: 30px;
+}
+
+    .icon:hover {
+        color: #d1d1d1; /* Cor dos ícones ao passar o mouse */
+    }

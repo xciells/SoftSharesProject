@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../assets/css/Login.css'; // Usando o CSS a partir da nova estrutura de diretÛrios
+import '../assets/css/Login.css'; // Usando o CSS a partir da nova estrutura de diret√≥rios
 
 import softsharesLogo from '../assets/images/softshares_logo.png';
 import softinsaLogo from '../assets/images/softinsa_logo.png';
@@ -16,9 +16,9 @@ const ChangePassword = () => {
 
     const handleChangePassword = async (e) => {
         e.preventDefault();
-        console.log('Iniciando a alteraÁ„o de senha'); // Mensagem de debug
+        console.log('Iniciando a altera√ß√£o de senha'); // Mensagem de debug
         if (newPassword !== confirmPassword) {
-            setMessage('As novas senhas n„o coincidem');
+            setMessage('As novas senhas n√£o coincidem');
             return;
         }
 

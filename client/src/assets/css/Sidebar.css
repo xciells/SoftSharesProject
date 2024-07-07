@@ -1,0 +1,41 @@
+
+.sidebar-custom .sidebar-heading {
+    padding: 5px 15px;
+    padding-top: 45px;
+    font-size: 1.2rem;
+    color: #333; /* Cor do texto */
+    background-color: #e0e0e6;
+}
+
+.sidebar-custom .list-group-item {
+    padding: 10px 15px;
+    color: #333; /* Cor do texto */
+    background-color: #e0e0e6; /* Cor de fundo padrão */
+    border-radius: 0px;
+    border-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+    .sidebar-custom .list-group-item a {
+        text-decoration: none; /* Remove sublinhado dos links */
+        color: inherit; /* Mantém a cor do texto */
+        display: block; /* Garante que o link ocupe toda a área do item */
+        width: 100%; /* Ocupa toda a largura */
+        height: 100%; /* Ocupa toda a altura */
+    }
+
+    .sidebar-custom .list-group-item:hover {
+        background-color: #007bff; /* Cor de fundo ao passar o mouse */
+        color: white; /* Cor do texto ao passar o mouse */
+    }
+
+.sidebar-custom {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    top: 56px; /* Ajuste conforme a altura da navbar */
+    left: 0;
+    overflow-y: auto;
+    background: #e0e0e6;
+}

@@ -4,7 +4,7 @@ const NoAccess = () => {
     return (
         <div className="container">
             <h1 className="my-4">Acesso Negado</h1>
-            <p>Utilizador sem permissıes de administrador, acesse a aplicaÁ„o mobile.</p>
+            <p>Utilizador sem permiss√µes de administrador, acesse a aplica√ß√£o mobile.</p>
         </div>
     );
 };
