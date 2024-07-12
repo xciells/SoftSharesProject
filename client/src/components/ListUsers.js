@@ -6,9 +6,12 @@ import '../assets/css/UserManagement.css';
 
 const ListUsers = () => {
     const [users, setUsers] = useState([]);
-    const [search, setSearch] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchField, setSearchField] = useState('nome');
     const [currentPage, setCurrentPage] = useState(1);
-    const [usersPerPage] = useState(20);
+    const [user, setUser] = useState(null);
+
+    const usersPerPage = 30;
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -18,27 +21,58 @@ const ListUsers = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUsers(response.data);
+                const userResponse = await axios.get('http://localhost:3001/auth/me', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setUser(userResponse.data);
             } catch (error) {
-                console.error('Erro ao buscar usuários:', error);
+                console.error('Erro ao buscar utilizadores:', error);
             }
         };
 
         fetchUsers();
     }, []);
 
-    const handleSearchChange = (e) => {
-        setSearch(e.target.value);
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const handleSearchFieldChange = (e) => {
+        setSearchField(e.target.value);
+    };
+
+    const toggleUserActiveStatus = async (userId, isActive) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.patch(`http://localhost:3001/auth/${isActive ? 'deactivate-user' : 'activate-user'}/${userId}`, {}, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setUsers(users.map(user => user.id === userId ? { ...user, ativo: !isActive } : user));
+        } catch (error) {
+            console.error('Erro ao alterar status do utilizador:', error);
+        }
+    };
+
+    const toggleUserType = async (userId, currentType) => {
+        try {
+            const token = localStorage.getItem('token');
+            const newType = currentType === 1 ? 2 : 1;
+            await axios.patch(`http://localhost:3001/auth/change-user-type/${userId}`, { tipoid: newType }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setUsers(users.map(user => user.id === userId ? { ...user, tipoid: newType } : user));
+        } catch (error) {
+            console.error('Erro ao alterar tipo de utilizador:', error);
+        }
     };
 
     const filteredUsers = users.filter(user =>
-        user.nome.toLowerCase().includes(search.toLowerCase())
+        user[searchField].toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
-
-    const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -47,46 +81,71 @@ const ListUsers = () => {
             <MenuSuperior />
             <Sidebar />
             <div className="dashboard-content">
-                <h2>Listar Utilizadores</h2>
-                <input
-                    type="text"
-                    className="search-input"
-                    placeholder="Buscar utilizadores..."
-                    value={search}
-                    onChange={handleSearchChange}
-                />
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Tipo</th>
-                            <th>Ativo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentUsers.map(user => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.nome}</td>
-                                <td>{user.email}</td>
-                                <td>{user.tipoid === 1 ? 'Comum' : 'Administrador'}</td>
-                                <td>{user.ativo ? 'Sim' : 'Não'}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <div className="pagination">
-                    {Array.from({ length: totalPages }, (_, index) => (
-                        <div
-                            key={index + 1}
-                            className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
-                            onClick={() => paginate(index + 1)}
+                <div className="list-users-container">
+                    <h2>Listar Utilizadores</h2>
+                    Buscar por:
+                    <div className="search-bar">
+                        <select
+                            className="form-control"
+                            value={searchField}
+                            onChange={handleSearchFieldChange}
                         >
-                            {index + 1}
-                        </div>
-                    ))}
+                            <option value="nome">Nome</option>
+                            <option value="numero_colaborador">NÃºmero de Colaborador</option>
+                        </select>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder={`Buscar por ${searchField}...`}
+                            value={searchTerm}
+                            onChange={handleSearch}
+                        />
+                    </div>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>NÃºmero de Colaborador</th>
+                                <th>Comum/Admin</th>
+                                <th>Ativar/Desativar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentUsers.map(user => (
+                                <tr key={user.id}>
+                                    <td>{user.id}</td>
+                                    <td>{user.nome}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.numero_colaborador}</td>
+                                    <td>
+                                        <button
+                                            className={`btn ${user.tipoid === 1 ? 'btn-comum' : 'btn-admin'}`}
+                                            onClick={() => toggleUserType(user.id, user.tipoid)}
+                                        >
+                                            {user.tipoid === 1 ? 'Comum' : 'Administrador'}
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button
+                                            className={`btn btn-${user.ativo ? 'success' : 'danger'}`}
+                                            onClick={() => toggleUserActiveStatus(user.id, user.ativo)}
+                                        >
+                                            {user.ativo ? 'Ativo' : 'Inativado'}
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className="pagination">
+                        {[...Array(Math.ceil(filteredUsers.length / usersPerPage)).keys()].map(number => (
+                            <button key={number + 1} onClick={() => paginate(number + 1)}>
+                                {number + 1}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

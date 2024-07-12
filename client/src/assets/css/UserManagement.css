@@ -6,7 +6,7 @@
 .associate-area-container,
 .manage-users-container {
     background-color: white;
-    padding-left:10px;
+    padding-left: 10px;
     width: 60%;
 }
 
@@ -50,7 +50,6 @@
             margin-right: 0;
         }
 
-
 .form-label {
     font-weight: bold;
 }
@@ -69,9 +68,9 @@
     margin-top: 20px;
 }
 
-.form-buttons .btn + .btn {
-    margin-left: 10px; /* Adiciona um espaço entre os botões */
-}
+    .form-buttons .btn + .btn {
+        margin-left: 10px; /* Adiciona um espaço entre os botões */
+    }
 
 .btn-secondary {
     background-color: #6c757d;
@@ -81,8 +80,24 @@
 
 /* Estilo para a barra de busca */
 .search-bar {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
+
+    .search-bar select {
+        margin-right: 10px;
+        padding: 10px;
+        max-width: 200px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .search-bar input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
 
 /* Estilo para a lista de utilizadores */
 .user-list {
@@ -98,6 +113,67 @@
         align-items: center;
     }
 
+/* Estilo para a tabela de utilizadores */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .table th,
+    .table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: #f4f4f4;
+    }
+
+.btn-link {
+    color: #007bff;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+    .btn-link:hover {
+        text-decoration: underline;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+}
+
+/* Estilo para os botões de tipo de usuário */
+.btn-comum {
+    background-color: #e0e0e6;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-admin {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 /* Estilo para a paginação */
 .pagination {
     display: flex;
@@ -110,8 +186,8 @@
         padding: 10px 20px;
     }
 
- /* mensagens de aviso */
-    .message {
+/* Mensagens de aviso */
+.message {
     margin-top: 10px;
     padding: 10px;
     border-radius: 5px;
@@ -126,5 +202,5 @@
     .message.error {
         color: red;
         background-color: #f8d7da;
-        border-color: #f5c6cb;
+        border-color: #
     }

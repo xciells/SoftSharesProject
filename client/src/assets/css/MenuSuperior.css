@@ -9,6 +9,11 @@
     padding-left: 30px;
 }
 
+.textnav {
+    color: white;
+    margin-top:10px;
+}
+
 .icon {
     font-size: 1.5rem; /* Tamanho dos ícones maior */
     color: white; /* Cor dos ícones */

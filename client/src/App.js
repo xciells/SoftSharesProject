@@ -13,6 +13,8 @@ import ActivateDeactivateUser from './components/ActivateDeactivateUser';
 import AssociatePermissions from './components/AssociatePermissions';
 import AssociateArea from './components/AssociateArea';
 import ManageUsers from './components/ManageUsers';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
     return (

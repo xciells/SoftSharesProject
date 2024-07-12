@@ -94,7 +94,7 @@ const authController = {
 
     changeUserType: async (req, res) => {
         const { userId } = req.params;
-        const { tipoid } = req.body; // 1 for common user, 2 for admin
+        const { tipoid } = req.body;
         try {
             const user = await Utilizadores.findByPk(userId);
             if (!user) {
@@ -102,9 +102,9 @@ const authController = {
             }
             user.tipoid = tipoid;
             await user.save();
-            res.status(200).json({ message: 'Tipo de usuário atualizado com sucesso' });
+            res.status(200).json({ message: 'Permissão de usuário atualizada com sucesso' });
         } catch (err) {
-            res.status(500).json({ error: 'Erro ao atualizar tipo de usuário' });
+            res.status(500).json({ error: 'Erro ao atualizar permissão de usuário' });
         }
     },
 
