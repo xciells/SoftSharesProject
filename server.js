@@ -3,24 +3,24 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const cors = require('cors');
-const db = require('./models'); 
+const db = require('./models');
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors()); 
+app.use(cors());
 
-//routes
+// Routes
 app.use('/auth', authRoutes);
 
-// Teste de Conexão com o Banco de Dados
+// Teste de ConexÃ£o com o Banco de Dados
 db.sequelize.authenticate()
     .then(() => {
-        console.log('Conexão com o banco de dados foi bem-sucedida.');
+        console.log('ConexÃ£o com o banco de dados foi bem-sucedida.');
     })
     .catch(err => {
-        console.error('Não foi possível conectar ao banco de dados:', err);
+        console.error('NÃ£o foi possÃ­vel conectar ao banco de dados:', err);
     });
 
 // Inicie o servidor

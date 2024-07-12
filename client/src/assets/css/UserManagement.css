@@ -30,35 +30,53 @@
             text-decoration: underline;
         }
 
-/* Estilo para mensagens */
-.message {
-    color: green;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
 /* Estilos para o formulário */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
 }
 
+.form-group-inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .form-group-inline .form-group {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+        .form-group-inline .form-group:last-child {
+            margin-right: 0;
+        }
+
+
 .form-label {
-    display: block;
-    margin-bottom: 5px;
     font-weight: bold;
 }
 
 .form-control {
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-.btn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-buttons .btn + .btn {
+    margin-left: 10px; /* Adiciona um espaço entre os botões */
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
 }
 
 /* Estilo para a barra de busca */
@@ -90,4 +108,23 @@
     .pagination button {
         margin: 0 5px;
         padding: 10px 20px;
+    }
+
+ /* mensagens de aviso */
+    .message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+    .message.success {
+        color: green;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .message.error {
+        color: red;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
     }

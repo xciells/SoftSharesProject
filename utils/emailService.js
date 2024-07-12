@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'MS_D4P0Pz@trial-3zxk54vqe06ljy6v.mlsender.net', // Usu·rio SMTP
+        user: 'MS_D4P0Pz@trial-3zxk54vqe06ljy6v.mlsender.net', // Usu√°rio SMTP
         pass: 'Vrvu5i5TixnatNlU' // Senha SMTP
     }
 });

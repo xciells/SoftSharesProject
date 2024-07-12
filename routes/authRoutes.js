@@ -1,32 +1,21 @@
-// routes/authRoutes.js
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
+const { verifyToken, isAdmin } = require('../utils/authMiddleware');
 
-//registo e login
+// Rotas de autentica√ß√£o
 router.post('/register', authController.register);
 router.post('/login', authController.login);
-
-//ativar e desativar utilizadores
-router.patch('/activate/:userId', authController.activateUser);
-router.patch('/deactivate/:userId', authController.deactivateUser);
-
-//mudar permissao entre admin ou utulizador comum
-router.patch('/change-type/:userId', authController.changeUserType);
-
-//mudar password pela primeira vez
-router.patch('/change-password/:userId', authController.changePassword);
-
-//recuperar password
+router.get('/me', verifyToken, authController.me);
 router.post('/recover-password', authController.recoverPassword);
+router.post('/change-password', verifyToken, authController.changePassword);
 
-// Rota para associar ·rea a um usu·rio
-router.patch('/associate-area/:id', authController.associateArea);
-
-// Rota para obter detalhes do usu·rio logado
-router.get('/me', authController.me);
-
-//Rota para mudar o password
-router.patch('/change-password', authController.changePassword);
+// Rotas de gerenciamento de utilizadores
+router.post('/create-user', verifyToken, isAdmin, authController.registerUser);
+router.patch('/activate-user/:userId', verifyToken, isAdmin, authController.activateUser);
+router.patch('/deactivate-user/:userId', verifyToken, isAdmin, authController.deactivateUser);
+router.patch('/change-user-type/:userId', verifyToken, isAdmin, authController.changeUserType);
+router.patch('/associate-area/:id', verifyToken, isAdmin, authController.associateArea);
+router.get('/areas', verifyToken, authController.getAreas);
 
 module.exports = router;

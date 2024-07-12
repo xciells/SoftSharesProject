@@ -84,6 +84,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="utils\emailService.js" />
+    <Content Include="utils\authMiddleware.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="client\" />
