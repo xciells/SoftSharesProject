@@ -17,5 +17,6 @@ router.patch('/deactivate-user/:userId', verifyToken, isAdmin, authController.de
 router.patch('/change-user-type/:userId', verifyToken, isAdmin, authController.changeUserType);
 router.patch('/associate-area/:id', verifyToken, isAdmin, authController.associateArea);
 router.get('/areas', verifyToken, authController.getAreas);
+router.get('/users', verifyToken, isAdmin, authController.getUsers);
 
 module.exports = router;

@@ -181,32 +181,7 @@ const authController = {
             res.status(500).json({ error: 'Erro ao registrar usuário', details: err.message });
         }
     },
-
-    getAreas: async (req, res) => {
-        try {
-            const token = req.headers.authorization.split(' ')[1];
-            const decoded = jwt.verify(token, 'your_jwt_secret');
-            const userId = decoded.id;
-
-            if (userId === 0) {
-                // Se for administrador geral, retorna todas as áreas
-                const areas = await Areas.findAll();
-                return res.status(200).json(areas);
-            } else {
-                // Se não for, retorna apenas as áreas associadas ao usuário
-                const userAreas = await UtilizadoresAreas.findAll({
-                    where: { utilizador_id: userId },
-                    include: [{ model: Areas, as: 'area' }]
-                });
-                const areas = userAreas.map(ua => ua.area);
-                return res.status(200).json(areas);
-            }
-        } catch (error) {
-            console.error('Erro ao buscar áreas:', error);
-            res.status(500).json({ error: 'Erro ao buscar áreas' });
-        }
-    },
-
+    
     me: async (req, res) => {
         try {
             const token = req.headers.authorization.split(' ')[1];
@@ -260,6 +235,65 @@ const authController = {
             res.status(200).json({ message: 'Cheque sua caixa postal. Se este email está no nosso sistema, receberá um novo password.' });
         } catch (err) {
             res.status(500).json({ error: 'Erro ao tentar recuperar a senha' });
+        }
+    },
+    getUsers: async (req, res) => {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, 'your_jwt_secret');
+            const userId = decoded.id;
+
+            if (userId === 0) {
+                // Se for administrador geral, retorna todos os usuários
+                const users = await Utilizadores.findAll();
+                return res.status(200).json(users);
+            } else {
+                // Se não for, retorna apenas os usuários associados às áreas do administrador
+                const userAreas = await UtilizadoresAreas.findAll({
+                    where: { utilizador_id: userId }
+                });
+
+                const areaIds = userAreas.map(ua => ua.area_id);
+
+                const users = await Utilizadores.findAll({
+                    include: [
+                        {
+                            model: Areas,
+                            as: 'areas',
+                            where: { id: areaIds }
+                        }
+                    ]
+                });
+
+                return res.status(200).json(users);
+            }
+        } catch (err) {
+            console.error('Erro ao buscar usuários:', err);
+            res.status(500).json({ error: 'Erro ao buscar usuários' });
+        }
+    },
+    getAreas: async (req, res) => {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, 'your_jwt_secret');
+            const userId = decoded.id;
+
+            if (userId === 0) {
+                // Se for administrador geral, retorna todas as áreas
+                const areas = await Areas.findAll();
+                return res.status(200).json(areas);
+            } else {
+                // Se não for, retorna apenas as áreas associadas ao usuário
+                const userAreas = await UtilizadoresAreas.findAll({
+                    where: { utilizador_id: userId },
+                    include: [{ model: Areas, as: 'area' }]
+                });
+                const areas = userAreas.map(ua => ua.area);
+                return res.status(200).json(areas);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar áreas:', error);
+            res.status(500).json({ error: 'Erro ao buscar áreas' });
         }
     }
 };
