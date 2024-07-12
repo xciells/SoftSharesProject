@@ -1,0 +1,101 @@
+[33mcommit c2da4f7ff2280bdf86e412670830482220c20bd9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Thu Jul 11 18:46:31 2024 +0100
+
+    Adiciona correto área, grupo e local no backend, falta corrigir frontend (fazer ultimo passo a passo elaborado)
+
+[33mcommit c2267cd660111d35db292db418826a2b0cd1f82e[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Sun Jul 7 05:41:54 2024 +0100
+
+    Todo frontend trabalhado no salto, só falta vestir um com cada roupa
+
+[33mcommit d637ff98cb26699bc117dd7eb50e27f5aa15a4a9[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Sun Jul 7 01:33:54 2024 +0100
+
+    Recupera senha, faz pizza e limpa a casa inteira na página de login
+
+[33mcommit 94f4b6959f8c64a81662fd05e987da1ab8a97f06[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Sun Jul 7 00:50:27 2024 +0100
+
+    Regista com sucesso
+
+[33mcommit ca738d712103a1eca2644270b8e83caf7ec0d8be[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Sat Jul 6 23:38:12 2024 +0100
+
+    Funciona melhor ainda :)
+
+[33mcommit 582d04f3f5eac38b4edec5592b9ddbcdf5cbaa15[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Sat Jul 6 23:35:07 2024 +0100
+
+    Frontend bonito e funcionando a parte de login!!!
+
+[33mcommit ff0203733fe5ccf25c661e47a83e64f992872140[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Sat Jul 6 20:59:00 2024 +0100
+
+    Frontend bonitinho
+
+[33mcommit 9249c77c475f3d7bb6d2b0903413efc67ef92c34[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Sat Jul 6 19:45:14 2024 +0100
+
+    Frontend iniciado e já reconhece os utilizadores administradores
+
+[33mcommit 3edee74248feade33b820e7bccbf56c8d3e262a8[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Fri Jul 5 20:07:11 2024 +0100
+
+    Utilizadores recebem email com senha aleatoria e instrucoes para mudar no primeiro login
+
+[33mcommit 63526d2d8077d1a67b1e1e44dd58a206c6301d3f[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Fri Jul 5 18:52:56 2024 +0100
+
+    Utilizadores podem mudar de area e cada um tem que pertencer a uma area
+
+[33mcommit cd6f9a23484fb76d07b6a9d44e858e59f6136679[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Fri Jul 5 17:42:18 2024 +0100
+
+    Utilizadores podem ter permissao alterada (ADMN ou user normal)
+
+[33mcommit de98fa1353ab790b233901753382ac2f7683d149[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Fri Jul 5 17:33:20 2024 +0100
+
+    Utilizadores podem ser ativados ou inativados
+
+[33mcommit 3c2c3865f4af9a5af69c99ae3784c01400e2fd15[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Fri Jul 5 17:17:53 2024 +0100
+
+    Utilizadores já podem ser adicionados pelo Postman
+
+[33mcommit 6d59eae75ccb6097e54aa5070939efef30a1f017[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Fri Jul 5 01:08:51 2024 +0100
+
+    Primeiro commit
+
+[33mcommit a3441d3dbf7c55a99cfc17fa835b20015fe7ff3b[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Thu Jul 4 23:41:46 2024 +0100
+
+    Incio
+
+[33mcommit fbf69aa7679e5c233638733d8aff6f95104c2ced[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Thu Jul 4 23:28:59 2024 +0100
+
+    Adicionar arquivos de projeto.
+
+[33mcommit 22cc90ec181b69485f8572e2df25e333c9a8bd3b[m
+Author: xciells <xcielfarias@gmail.com>
+Date:   Thu Jul 4 23:28:40 2024 +0100
+
+    Adicione .gitattributes e .gitignore.

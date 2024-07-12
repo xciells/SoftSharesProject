@@ -27,6 +27,8 @@ const DashboardAdmin = () => {
         return <div>Carregando...</div>;
     }
 
+    const areaNames = user.areas.map(area => area.nome).join(', ');
+
     return (
         <div className="dashboard-admin">
             <MenuSuperior />
@@ -36,7 +38,7 @@ const DashboardAdmin = () => {
                 {user.id === 0 ? (
                     <p>Você tem acesso a todas as áreas.</p>
                 ) : (
-                    <p>Você tem acesso à área: {user.area_id}</p>
+                    <p>Você tem acesso a seguinte área: {areaNames}</p>
                 )}
             </div>
         </div>

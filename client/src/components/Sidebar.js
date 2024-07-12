@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/css/DashboardAdmin.css';
+import '../assets/css/Sidebar.css';
 
 const Sidebar = () => {
     return (
@@ -9,6 +9,9 @@ const Sidebar = () => {
             <ul className="list-group">
                 <li className="list-group-item">
                     <Link to="/dashboard-admin">Dashboard</Link>
+                </li>
+                <li className="list-group-item">
+                    <Link to="/manage-users">Utilizadores</Link>
                 </li>
                 <li className="list-group-item">
                     <Link to="/opcao1">Opção 1</Link>

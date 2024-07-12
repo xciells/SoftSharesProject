@@ -1,0 +1,93 @@
+/* Estilos gerais para o gerenciamento de utilizadores */
+.create-user-container,
+.list-users-container,
+.activate-deactivate-user-container,
+.associate-permissions-container,
+.associate-area-container,
+.manage-users-container {
+    background-color: white;
+    padding-left:10px;
+    width: 60%;
+}
+
+/* Estilo para a lista de gerenciamento de utilizadores */
+.manage-users-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .manage-users-list li {
+        margin-bottom: 10px;
+    }
+
+    .manage-users-list a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .manage-users-list a:hover {
+            text-decoration: underline;
+        }
+
+/* Estilo para mensagens */
+.message {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o formulário */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Estilo para a barra de busca */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+/* Estilo para a lista de utilizadores */
+.user-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .user-list li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+/* Estilo para a paginação */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    .pagination button {
+        margin: 0 5px;
+        padding: 10px 20px;
+    }

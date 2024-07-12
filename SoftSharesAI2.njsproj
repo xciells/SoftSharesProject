@@ -34,8 +34,12 @@
     <Content Include="client\package.json" />
     <Content Include="client\public\favicon.ico" />
     <Content Include="client\src\assets\css\DashboardAdmin.css" />
+    <Content Include="client\src\assets\css\ManageUsers.css" />
+    <Content Include="client\src\assets\css\MenuSuperior.css" />
     <Content Include="client\src\assets\css\RecoverPassword.css" />
     <Content Include="client\src\assets\css\Register.css" />
+    <Content Include="client\src\assets\css\Sidebar.css" />
+    <Content Include="client\src\assets\css\UserManagement.css" />
     <Content Include="client\src\assets\images\softinsa_logo.png" />
     <Content Include="client\src\assets\images\softshares_logo.png" />
     <Content Include="client\public\index.html" />
@@ -49,10 +53,16 @@
     <Content Include="client\src\App.test.js" />
     <Content Include="client\src\assets\images\softshares_white.png" />
     <Content Include="client\src\components\Account.js" />
+    <Content Include="client\src\components\ActivateDeactivateUser.js" />
+    <Content Include="client\src\components\AssociateArea.js" />
+    <Content Include="client\src\components\AssociatePermissions.js" />
     <Content Include="client\src\components\ChangePassword.js" />
     <Content Include="client\src\assets\css\ChangePassword.css" />
+    <Content Include="client\src\components\CreateUser.js" />
     <Content Include="client\src\components\DashboardAdmin.js" />
+    <Content Include="client\src\components\ListUsers.js" />
     <Content Include="client\src\components\Login.js" />
+    <Content Include="client\src\components\ManageUsers.js" />
     <Content Include="client\src\components\MenuSuperior.js" />
     <Content Include="client\src\components\NoAccess.js" />
     <Content Include="client\src\assets\css\Login.css" />
@@ -60,6 +70,7 @@
     <Content Include="client\src\components\RecoverPassword.js" />
     <Content Include="client\src\components\Register.js" />
     <Content Include="client\src\components\Sidebar.js" />
+    <Content Include="client\src\components\UserManagementLayout.js" />
     <Content Include="client\src\index.css" />
     <Content Include="client\src\index.js" />
     <Content Include="client\src\logo.svg" />

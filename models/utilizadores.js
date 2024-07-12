@@ -1,7 +1,7 @@
 // models/utilizadores.js
 const Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('utilizadores', {
+    const Utilizadores = sequelize.define('utilizadores', {
         id: {
             autoIncrement: true,
             type: DataTypes.INTEGER,
@@ -53,14 +53,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: true
-        },
-        area_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'areas',
-                key: 'id'
-            }
         }
     }, {
         sequelize,
@@ -77,4 +69,15 @@ module.exports = function (sequelize, DataTypes) {
             },
         ]
     });
+
+    Utilizadores.associate = function (models) {
+        Utilizadores.belongsToMany(models.areas, {
+            through: 'utilizadores_areas',
+            as: 'areas',
+            foreignKey: 'utilizador_id',
+            otherKey: 'area_id'
+        });
+    };
+
+    return Utilizadores;
 };

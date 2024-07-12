@@ -7,6 +7,12 @@ import Register from './components/Register';
 import RecoverPassword from './components/RecoverPassword';
 import Account from './components/Account';
 import Notifications from './components/Notifications';
+import CreateUser from './components/CreateUser';
+import ListUsers from './components/ListUsers';
+import ActivateDeactivateUser from './components/ActivateDeactivateUser';
+import AssociatePermissions from './components/AssociatePermissions';
+import AssociateArea from './components/AssociateArea';
+import ManageUsers from './components/ManageUsers';
 
 const App = () => {
     return (
@@ -17,10 +23,18 @@ const App = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/change-password" element={<ChangePassword />} />
                 <Route path="/recover-password" element={<RecoverPassword />} />
+                <Route path="/manage-users" element={<ManageUsers />} />
                 <Route path="/dashboard-admin" element={<DashboardAdmin />} />
                 <Route path="/account" element={<Account />} />
                 <Route path="/notifications" element={<Notifications />} />
-                <Route path="*" element={<div>404 Not Found</div>} />
+                <Route path="/create-user" element={<CreateUser />} />
+                <Route path="/list-users" element={<ListUsers />} />
+                <Route path="/activate-deactivate-user" element={<ActivateDeactivateUser />} />
+                <Route path="/associate-permissions" element={<AssociatePermissions />} />
+                <Route path="/associate-area" element={<AssociateArea />} />
+                {/* Rota padrão */}
+                <Route path="/" element={<DashboardAdmin />} />
+                <Route path="*" element={<div>Página não encontrada</div>} />
             </Routes>
         </Router>
     );

@@ -35,4 +35,11 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.utilizadores = require('./utilizadores')(sequelize, Sequelize.DataTypes);
+db.areas = require('./areas')(sequelize, Sequelize.DataTypes);
+
+// Associações
+db.utilizadores.associate(db);
+db.areas.associate(db);
+
 module.exports = db;

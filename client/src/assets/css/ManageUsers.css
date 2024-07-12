@@ -1,0 +1,19 @@
+.manage-users-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .manage-users-list li {
+        margin-bottom: 10px;
+    }
+
+    .manage-users-list a {
+        text-decoration: none;
+        color: #007bff;
+        font-size: 1.2rem;
+    }
+
+        .manage-users-list a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }

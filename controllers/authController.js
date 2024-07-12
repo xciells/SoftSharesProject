@@ -30,8 +30,7 @@ const authController = {
                 contacto,
                 tipoid,
                 ativo: true,
-                senha_temporaria: true,
-                area_id: 0
+                senha_temporaria: true
             });
 
             const emailText = `Olá ${nome},\n\nSua conta foi criada com sucesso. Sua senha temporária é: ${password}\n\nPor favor, altere sua senha após o primeiro login.\n\nObrigado!`;
@@ -136,7 +135,9 @@ const authController = {
         try {
             const token = req.headers.authorization.split(' ')[1];
             const decoded = jwt.verify(token, 'your_jwt_secret');
-            const user = await Utilizadores.findByPk(decoded.id);
+            const user = await Utilizadores.findByPk(decoded.id, {
+                include: [{ model: Areas, as: 'areas' }]
+            });
             res.json(user);
         } catch (err) {
             res.status(500).json({ error: 'Erro ao obter detalhes do usuário' });
