@@ -6,14 +6,14 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'MS_DKKmWP@trial-3zxk54vqe06ljy6v.mlsender.net', // Usuário SMTP
-        pass: '5BzyFacULMtUwQWB' // Senha SMTP
+        user: 'MS_D4P0Pz@trial-3zxk54vqe06ljy6v.mlsender.net', // Usuário SMTP
+        pass: 'Vrvu5i5TixnatNlU' // Senha SMTP
     }
 });
 
 const sendEmail = (to, subject, text) => {
     const mailOptions = {
-        from: 'MS_DKKmWP@trial-3zxk54vqe06ljy6v.mlsender.net',
+        from: 'MS_D4P0Pz@trial-3zxk54vqe06ljy6v.mlsender.net',
         to: to,
         subject: subject,
         text: text
