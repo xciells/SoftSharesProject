@@ -1,0 +1,42 @@
+.dashboard-admin {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar-custom {
+    width: 250px;
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+}
+
+.user-profile-container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.back-button {
+    top: 20px;
+    right: 20px;
+    font-size: 1em;
+    padding: 5px 10px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+    p strong {
+        margin-right: 5px;
+    }

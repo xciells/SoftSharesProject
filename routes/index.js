@@ -1,14 +1,12 @@
-// routes/index.js
 const express = require('express');
 const router = express.Router();
-
-// Exemplo de rota de teste
-router.get('/', (req, res) => {
-    res.send('API is working');
-});
-
-// Importar rotas de autenticação
 const authRoutes = require('./authRoutes');
+const usersRoutes = require('./usersRoutes');
+const profileRoutes = require('./profileRoutes');
+
 router.use('/auth', authRoutes);
+router.use('/users', usersRoutes);
+router.use('/profile', profileRoutes);
 
 module.exports = router;
+

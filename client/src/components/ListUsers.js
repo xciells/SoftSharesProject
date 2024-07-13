@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import MenuSuperior from './MenuSuperior';
 import Sidebar from './Sidebar';
 import '../assets/css/UserManagement.css';
@@ -9,7 +10,7 @@ const ListUsers = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchField, setSearchField] = useState('nome');
     const [currentPage, setCurrentPage] = useState(1);
-    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
     const usersPerPage = 30;
 
@@ -17,14 +18,10 @@ const ListUsers = () => {
         const fetchUsers = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:3001/auth/users', {
+                const response = await axios.get('http://localhost:3001/users', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUsers(response.data);
-                const userResponse = await axios.get('http://localhost:3001/auth/me', {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-                setUser(userResponse.data);
             } catch (error) {
                 console.error('Erro ao buscar utilizadores:', error);
             }
@@ -44,7 +41,7 @@ const ListUsers = () => {
     const toggleUserActiveStatus = async (userId, isActive) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.patch(`http://localhost:3001/auth/${isActive ? 'deactivate-user' : 'activate-user'}/${userId}`, {}, {
+            await axios.patch(`http://localhost:3001/users/${isActive ? 'deactivate-user' : 'activate-user'}/${userId}`, {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(users.map(user => user.id === userId ? { ...user, ativo: !isActive } : user));
@@ -57,7 +54,7 @@ const ListUsers = () => {
         try {
             const token = localStorage.getItem('token');
             const newType = currentType === 1 ? 2 : 1;
-            await axios.patch(`http://localhost:3001/auth/change-user-type/${userId}`, { tipoid: newType }, {
+            await axios.patch(`http://localhost:3001/users/change-user-type/${userId}`, { tipoid: newType }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(users.map(user => user.id === userId ? { ...user, tipoid: newType } : user));
@@ -114,15 +111,18 @@ const ListUsers = () => {
                         </thead>
                         <tbody>
                             {currentUsers.map(user => (
-                                <tr key={user.id}>
+                                <tr key={user.id} onClick={() => navigate(`/user-profile/${user.id}`)}>
                                     <td>{user.id}</td>
-                                    <td>{user.nome}</td>
+                                    <td className="user-name">{user.nome}</td>
                                     <td>{user.email}</td>
                                     <td>{user.numero_colaborador}</td>
                                     <td>
                                         <button
                                             className={`btn ${user.tipoid === 1 ? 'btn-comum' : 'btn-admin'}`}
-                                            onClick={() => toggleUserType(user.id, user.tipoid)}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                toggleUserType(user.id, user.tipoid);
+                                            }}
                                         >
                                             {user.tipoid === 1 ? 'Comum' : 'Administrador'}
                                         </button>
@@ -130,7 +130,10 @@ const ListUsers = () => {
                                     <td>
                                         <button
                                             className={`btn btn-${user.ativo ? 'success' : 'danger'}`}
-                                            onClick={() => toggleUserActiveStatus(user.id, user.ativo)}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                toggleUserActiveStatus(user.id, user.ativo);
+                                            }}
                                         >
                                             {user.ativo ? 'Ativo' : 'Inativado'}
                                         </button>

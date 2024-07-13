@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../assets/css/Login.css'; // Usando o CSS a partir da nova estrutura de diretórios
-
+import '../assets/css/Login.css'; 
 import softsharesLogo from '../assets/images/softshares_logo.png';
 import softinsaLogo from '../assets/images/softinsa_logo.png';
 import { useNavigate } from 'react-router-dom';

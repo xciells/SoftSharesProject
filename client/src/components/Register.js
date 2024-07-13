@@ -57,7 +57,7 @@ const Register = () => {
             <div className="register-box">
                 <img src={softsharesLogo} alt="SoftShares Logo" className="logo" />
                 <h2>Registrar</h2>
-                {message && <div className="message">{message}</div>}
+                
                 <form onSubmit={handleRegister}>
                     <div className="form-group">
                         <label className="form-label">Nome:</label>
@@ -117,10 +117,12 @@ const Register = () => {
                             onChange={(e) => setContacto(e.target.value)}
                         />
                     </div>
+                    {message && <div className="message">{message}</div>}
                     <button type="submit" className="btn btn-primary">Registrar</button>
                     <button type="button" className="btn btn-secondary" onClick={handleBack}>Voltar</button>
                 </form>
                 <img src={softinsaLogo} alt="Softinsa Logo" className="logo-bottom" />
+                
             </div>
         </div>
     );

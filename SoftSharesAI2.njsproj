@@ -29,6 +29,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="client\src\assets\css\UserProfile.css" />
+    <Content Include="controllers\profileController.js" />
     <Content Include="client\.gitignore" />
     <Content Include="client\package-lock.json" />
     <Content Include="client\package.json" />
@@ -53,9 +55,6 @@
     <Content Include="client\src\App.test.js" />
     <Content Include="client\src\assets\images\softshares_white.png" />
     <Content Include="client\src\components\Account.js" />
-    <Content Include="client\src\components\ActivateDeactivateUser.js" />
-    <Content Include="client\src\components\AssociateArea.js" />
-    <Content Include="client\src\components\AssociatePermissions.js" />
     <Content Include="client\src\components\ChangePassword.js" />
     <Content Include="client\src\assets\css\ChangePassword.css" />
     <Content Include="client\src\components\CreateUser.js" />
@@ -71,6 +70,7 @@
     <Content Include="client\src\components\Register.js" />
     <Content Include="client\src\components\Sidebar.js" />
     <Content Include="client\src\components\UserManagementLayout.js" />
+    <Content Include="client\src\components\UserProfile.js" />
     <Content Include="client\src\index.css" />
     <Content Include="client\src\index.js" />
     <Content Include="client\src\logo.svg" />
@@ -78,8 +78,46 @@
     <Content Include="client\src\setupTests.js" />
     <Content Include="config\config.json" />
     <Content Include="controllers\authController.js" />
+    <Content Include="controllers\usersController.js" />
+    <Content Include="models\albuns.js" />
+    <Content Include="models\albuns_areas.js" />
+    <Content Include="models\albuns_foruns.js" />
+    <Content Include="models\albuns_grupos.js" />
+    <Content Include="models\albuns_locais.js" />
+    <Content Include="models\albuns_utilizadores.js" />
+    <Content Include="models\areas.js" />
+    <Content Include="models\areas_utilizadores.js" />
+    <Content Include="models\classificacoes.js" />
+    <Content Include="models\classificacoes_locais.js" />
+    <Content Include="models\comentarios.js" />
+    <Content Include="models\forums.js" />
+    <Content Include="models\forums_grupos.js" />
+    <Content Include="models\forums_locais.js" />
+    <Content Include="models\fotos.js" />
+    <Content Include="models\grupos.js" />
+    <Content Include="models\grupos_areas.js" />
+    <Content Include="models\grupos_locais.js" />
+    <Content Include="models\grupos_utilizadores.js" />
+    <Content Include="models\index.js" />
+    <Content Include="models\init-models.js" />
+    <Content Include="models\locais.js" />
+    <Content Include="models\locais_areas.js" />
+    <Content Include="models\locais_foruns.js" />
+    <Content Include="models\locais_precos.js" />
+    <Content Include="models\precos.js" />
+    <Content Include="models\tipos_utilizadores.js" />
+    <Content Include="models\utilizadores.js" />
+    <Content Include="models\utilizadores_albuns.js" />
+    <Content Include="models\utilizadores_areas.js" />
+    <Content Include="models\utilizadores_classificacoes.js" />
+    <Content Include="models\utilizadores_comentarios.js" />
+    <Content Include="models\utilizadores_foruns.js" />
+    <Content Include="models\utilizadores_grupos.js" />
+    <Content Include="models\utilizadores_locais.js" />
     <Content Include="routes\authRoutes.js" />
     <Content Include="routes\index.js" />
+    <Content Include="routes\profileRoutes.js" />
+    <Content Include="routes\usersRoutes.js" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -97,7 +135,6 @@
     <Folder Include="models\" />
     <Folder Include="utils\" />
     <Folder Include="routes\" />
-    <Folder Include="views\" />
     <Folder Include="controllers\" />
     <Folder Include="config\" />
   </ItemGroup>

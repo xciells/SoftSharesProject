@@ -1,32 +1,20 @@
-// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const authRoutes = require('./routes/authRoutes');
 const cors = require('cors');
-const db = require('./models');
 const app = express();
+const PORT = 3001;
 
-// Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+const authRoutes = require('./routes/authRoutes');
+const usersRoutes = require('./routes/usersRoutes');
+const profileRoutes = require('./routes/profileRoutes');
+
 app.use(cors());
+app.use(bodyParser.json());
 
-// Routes
 app.use('/auth', authRoutes);
+app.use('/users', usersRoutes);
+app.use('/profile', profileRoutes);
 
-// Teste de Conexão com o Banco de Dados
-db.sequelize.authenticate()
-    .then(() => {
-        console.log('Conexão com o banco de dados foi bem-sucedida.');
-    })
-    .catch(err => {
-        console.error('Não foi possível conectar ao banco de dados:', err);
-    });
-
-// Inicie o servidor
-const PORT = process.env.PORT || 3001;
-db.sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Servidor rodando na porta ${PORT}`);
-    });
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });

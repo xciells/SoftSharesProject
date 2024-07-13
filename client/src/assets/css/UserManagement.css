@@ -4,7 +4,8 @@
 .activate-deactivate-user-container,
 .associate-permissions-container,
 .associate-area-container,
-.manage-users-container {
+.manage-users-container,
+.user-profile-container {
     background-color: white;
     padding-left: 10px;
     width: 60%;
@@ -157,9 +158,8 @@
     padding: 5px 10px;
 }
 
-/* Estilo para os botões de tipo de usuário */
 .btn-comum {
-    background-color: #e0e0e6;
+    background-color: #f4f4f4;
     color: black;
     border: none;
     padding: 5px 10px;
@@ -173,9 +173,15 @@
     padding: 5px 10px;
     border-radius: 5px;
 }
-
+    .btn-admin:hover {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
 /* Estilo para a paginação */
-.pagination {
+    .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -202,5 +208,36 @@
     .message.error {
         color: red;
         background-color: #f8d7da;
-        border-color: #
+        border-color: #f5c6cb;
+    }
+
+/* Estilos para o perfil do usuário */
+.user-profile-container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+    .user-profile-container h2 {
+        margin-bottom: 20px;
+    }
+
+    .user-profile-container p {
+        margin: 10px 0;
+        font-size: 1.1rem;
+    }
+
+.back-button {
+    float: right;
+    margin-bottom: 20px;
+}
+
+.user-name {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .user-name:hover {
+        color: #007bff;
+        text-decoration: underline;
     }

@@ -26,12 +26,12 @@ const CreateUser = () => {
                 });
                 setUser(response.data);
                 if (response.data.id === 0) {
-                    const areasResponse = await axios.get('http://localhost:3001/auth/areas', {
+                    const areasResponse = await axios.get('http://localhost:3001/users/areas', {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setAllAreas(areasResponse.data);
                 } else {
-                    const userAreasResponse = await axios.get('http://localhost:3001/auth/areas', {
+                    const userAreasResponse = await axios.get('http://localhost:3001/users/areas', {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setAreas(userAreasResponse.data.map(area => area.id));
