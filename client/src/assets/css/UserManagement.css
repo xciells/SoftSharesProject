@@ -5,7 +5,8 @@
 .associate-permissions-container,
 .associate-area-container,
 .manage-users-container,
-.user-profile-container {
+.user-profile-container, 
+.areas-container {
     background-color: white;
     padding-left: 10px;
     width: 60%;
@@ -30,6 +31,18 @@
         .manage-users-list a:hover {
             text-decoration: underline;
         }
+
+/* Estilos para áreas */
+.areas-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .areas-list li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
 
 /* Estilos para o formulário */
 .form-group {
@@ -67,6 +80,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    height: 20px;
 }
 
     .form-buttons .btn + .btn {
@@ -77,6 +91,7 @@
     background-color: #6c757d;
     border-color: #6c757d;
     color: white;
+    height: 20px;
 }
 
 /* Estilo para a barra de busca */

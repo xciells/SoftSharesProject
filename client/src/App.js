@@ -11,6 +11,7 @@ import CreateUser from './components/CreateUser';
 import ListUsers from './components/ListUsers';
 import ManageUsers from './components/ManageUsers';
 import UserProfile from './components/UserProfile';
+import Areas from './components/Areas';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/create-user" element={<CreateUser />} />
                 <Route path="/list-users" element={<ListUsers />} />
                 <Route path="/user-profile/:id" element={<UserProfile />} />
+                <Route path="/areas" element={<Areas />} />
                 <Route path="*" element={<div>Página não encontrada</div>} />
             </Routes>
         </Router>

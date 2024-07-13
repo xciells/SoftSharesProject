@@ -18,15 +18,6 @@ const ManageUsers = () => {
                     <li>
                         <Link to="/list-users">Listar Utilizadores</Link>
                     </li>
-                    <li>
-                        <Link to="/activate-deactivate-user">Ativar/Inativar Utilizadores</Link>
-                    </li>
-                    <li>
-                        <Link to="/associate-permissions">Associar Permissões</Link>
-                    </li>
-                    <li>
-                        <Link to="/associate-area">Associar a uma Área</Link>
-                    </li>
                 </ul>
             </div>
         </div>

@@ -14,7 +14,7 @@ const Sidebar = () => {
                     <Link to="/manage-users">Utilizadores</Link>
                 </li>
                 <li className="list-group-item">
-                    <Link to="/opcao1">Opção 1</Link>
+                    <Link to="/areas">Áreas</Link>
                 </li>
                 <li className="list-group-item">
                     <Link to="/opcao2">Opção 2</Link>

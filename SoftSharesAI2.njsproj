@@ -30,6 +30,8 @@
   <ItemGroup>
     <Content Include="app.js" />
     <Content Include="client\src\assets\css\UserProfile.css" />
+    <Content Include="client\src\components\Areas.js" />
+    <Content Include="controllers\areasController.js" />
     <Content Include="controllers\profileController.js" />
     <Content Include="client\.gitignore" />
     <Content Include="client\package-lock.json" />
@@ -114,6 +116,7 @@
     <Content Include="models\utilizadores_foruns.js" />
     <Content Include="models\utilizadores_grupos.js" />
     <Content Include="models\utilizadores_locais.js" />
+    <Content Include="routes\areasRoutes.js" />
     <Content Include="routes\authRoutes.js" />
     <Content Include="routes\index.js" />
     <Content Include="routes\profileRoutes.js" />
