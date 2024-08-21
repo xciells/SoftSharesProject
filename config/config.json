@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "postgres",
-    "password": "AXTgH943@ix",
+    "password": "xxx",
     "database": "softshares_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "AXTgH943@ix",
+    "password": "xxx",
     "database": "softshares_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "AXTgH943@ix",
+    "password": "xxx",
     "database": "softshares_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
